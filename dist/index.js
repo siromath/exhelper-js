@@ -17,6 +17,15 @@ module.exports = {
   isObject (arg) {
     return typeof arg === 'object' && arg !== null && !Array.isArray(arg)
   },
+  typeof (arg) {
+    if (Array.isArray(arg)) {
+      return 'array'
+    } else if (arg === null) {
+      return 'null'
+    } else {
+      return typeof arg
+    }
+  },
   length (arg) {
     if (Array.isArray(arg) || typeof arg === 'string') {
       return arg.length
