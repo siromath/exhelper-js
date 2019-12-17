@@ -64,11 +64,11 @@ ex['<=>'](value1, value2)
 #### Example
 
 ```javascript
-ex['??']('foo', 'bar') // => 'foo'
+ex['<=>'](2, 1) // => 1
 
-ex['??'](undefined, 'bar') // => undefined
+ex['<=>'](1, 2) // => -1
 
-ex['??'](null, 'bar') // => 'bar'
+ex['<=>'](1, 1) // => 0
 ```
 
 ### `isObject`
@@ -89,6 +89,24 @@ ex.isObject({}) // => true
 ex.isObject([1, 2, 3]) // => false
 
 ex.isObject(null) // => false
+```
+
+### `typeof`
+
+```javascript
+ex.typeof(arg)
+```
+
+`arg` が配列の場合は `'array'` , `null` の場合は `'null'` , それ以外の場合は `typeof arg` の結果を返します。
+
+#### Example
+
+```javascript
+ex.typeof([1, 2, 3]) // => 'array'
+
+ex.typeof(null) // => 'null'
+
+ex.typeof('foo') // => 'string'
 ```
 
 ### `length`
