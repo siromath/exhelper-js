@@ -2,11 +2,20 @@
   "name": "exhelper-js",
   "version": "0.1.1",
   "description": "Helper functions for something.",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist-cjs/index.js",
+  "module": "dist-esm/index.js",
+  "types": "dist-cjs/index.d.ts",
   "scripts": {
-    "lint": "eslint --ext .js --ignore-path .gitignore .",
-    "fix": "eslint --fix --ext .js --ignore-path .gitignore ."
+    "lint": "eslint src/**/*.ts",
+    "fix": "eslint src/**/*.ts --fix",
+    "build": "run-s build:*",
+    "build:cjs": "tsc --module commonjs --outDir ./dist-cjs",
+    "build:esm": "tsc --module es2015 --outDir ./dist-esm",
+    "prepublish": "npm run lint && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siromath/exhelper-js"
   },
   "keywords": [
     "javascript",
@@ -15,12 +24,19 @@
   ],
   "author": "siromath",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siromath/exhelper-js/issues"
+  },
   "devDependencies": {
-    "eslint": "^6.2.2",
-    "eslint-config-standard": "^14.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^3.7.2"
   }
 }

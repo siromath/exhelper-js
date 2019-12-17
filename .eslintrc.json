@@ -1,6 +1,21 @@
 {
-  "extends": "standard",
+  "extends": [
+    "standard",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "rules": {
-    "no-unneeded-ternary": "off"
+    "@typescript-eslint/explicit-function-return-type": "off"
   }
 }

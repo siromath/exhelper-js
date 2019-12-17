@@ -9,7 +9,7 @@
 npm install exhelper-js
 ```
 
-```javascript
+```typescript
 // CommonJS
 const ex = require('exhelper-js')
 
@@ -21,15 +21,15 @@ import ex from 'exhelper-js'
 
 ### `?:`
 
-```javascript
-ex['?:'](value1, value2)
+```typescript
+ex['?:']<S, T>(value1: S, value2: T): S | T
 ```
 
-`value1 ? value1 : value2` の結果を返します。
+`value1 || value2` の結果を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex['?:']('foo', 'bar') // => 'foo'
 
 ex['?:'](undefined, 'bar') // => 'bar'
@@ -37,33 +37,33 @@ ex['?:'](undefined, 'bar') // => 'bar'
 
 ### `??`
 
-```javascript
-ex['??'](value1, value2)
+```typescript
+ex['??']<S, T>(value1: S, value2: T): T | NonNullable<S>
 ```
 
-`(value1 !== null) ? value1 : value2` の結果を返します。
+`value1 ?? value2` ([Nullish coalescing operator](https://github.com/tc39/proposal-nullish-coalescing)) の結果を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex['??']('foo', 'bar') // => 'foo'
 
-ex['??'](undefined, 'bar') // => undefined
+ex['??'](undefined, 'bar') // => 'bar'
 
 ex['??'](null, 'bar') // => 'bar'
 ```
 
 ### `<=>`
 
-```javascript
-ex['<=>'](value1, value2)
+```typescript
+ex['<=>'](value1: number, value2: number): 1 | -1 | 0
 ```
 
 `value1` が `value2` より大きければ `1` , `value2` が `value1` より大きければ `-1` , それ以外の場合は `0` を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex['<=>'](2, 1) // => 1
 
 ex['<=>'](1, 2) // => -1
@@ -73,15 +73,15 @@ ex['<=>'](1, 1) // => 0
 
 ### `isObject`
 
-```javascript
-ex.isObject(arg)
+```typescript
+ex.isObject(arg: unknown): boolean
 ```
 
 `arg` がオブジェクトなら `true` , そうでない場合は `false` を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex.isObject({ a: 1 }) // => true
 
 ex.isObject({}) // => true
@@ -93,15 +93,15 @@ ex.isObject(null) // => false
 
 ### `typeof`
 
-```javascript
-ex.typeof(arg)
+```typescript
+ex.typeof(arg: unknown): 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function' | 'array' | 'null'
 ```
 
 `arg` が配列の場合は `'array'` , `null` の場合は `'null'` , それ以外の場合は `typeof arg` の結果を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex.typeof([1, 2, 3]) // => 'array'
 
 ex.typeof(null) // => 'null'
@@ -111,15 +111,15 @@ ex.typeof('foo') // => 'string'
 
 ### `length`
 
-```javascript
-ex.length(arg)
+```typescript
+ex.length(arg: unknown): number | undefined
 ```
 
 `arg` が文字列か配列の場合は `arg.length` , `arg` がオブジェクトの場合は `Object.keys(arg).length` , それ以外の場合は `undefined` を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex.length([1, 2, 3]) // => 3
 
 ex.length({ a: 1, b: 2 }) // => 2
@@ -127,28 +127,28 @@ ex.length({ a: 1, b: 2 }) // => 2
 
 ### `sum`
 
-```javascript
-ex.sum(nums)
+```typescript
+ex.sum(nums: number[]): number
 ```
 
 数値の配列の全要素の和を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex.sum([1, 2, 3, 4]) // => 10
 ```
 
 ### `product`
 
-```javascript
-ex.product(nums)
+```typescript
+ex.product(nums: number[]): number
 ```
 
 数値の配列の全要素の積を返します。
 
 #### Example
 
-```javascript
+```typescript
 ex.product([1, 2, 3, 4]) // => 24
 ```
