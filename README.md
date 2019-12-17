@@ -11,7 +11,7 @@ npm install exhelper-js
 
 ```typescript
 // CommonJS
-const ex = require('exhelper-js')
+const ex = require('exhelper-js').default
 
 // ESModules
 import ex from 'exhelper-js'
