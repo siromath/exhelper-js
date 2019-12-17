@@ -23,7 +23,7 @@
     "exhelper-js"
   ],
   "author": "siromath",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/siromath/exhelper-js/issues"
   },
