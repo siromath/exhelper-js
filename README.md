@@ -64,11 +64,11 @@ ex['<=>'](value1, value2)
 #### Example
 
 ```javascript
-ex['??']('foo', 'bar') // => 'foo'
+ex['<=>'](2, 1) // => 1
 
-ex['??'](undefined, 'bar') // => undefined
+ex['<=>'](1, 2) // => -1
 
-ex['??'](null, 'bar') // => 'bar'
+ex['<=>'](1, 1) // => 0
 ```
 
 ### `isObject`
